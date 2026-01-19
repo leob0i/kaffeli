@@ -62,56 +62,68 @@ export default function HomePage() {
                 Katso galleria
               </Link>
               <a
-                href={SITE.facebook}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex justify-center rounded-2xl bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 ring-1 ring-white/10 transition hover:bg-white/10"
-              >
-                Facebook
-              </a>
+  href="#yhteystiedot"
+  className="inline-flex justify-center rounded-2xl bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 ring-1 ring-white/10 transition hover:bg-white/10"
+>
+  Yhteystiedot ja aukioloajat
+</a>
+
             </div>
           </div>
         </Container>
       </section>
 
-      <MonthlyPromo />
+ {/* HIGHLIGHTS (text-first + Ajankohtaista right) */}
+<section className="bg-zinc-950 py-16 sm:py-20">
+  <Container>
+    <SectionHeading
+      variant="dark"
+      title="Laatu, joka näkyy ja maistuu"
+      description="Tuore kahvi, sesongin herkut ja rento tunnelma, tervetuloa nauttimaan."
+    />
 
-      {/* HIGHLIGHTS */}
-      <section className="bg-zinc-950 py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-  variant="dark"
-  kicker="Kaffila"
-  title="Laatu, joka näkyy — ja maistuu"
-  description="Kolme asiaa, joista Kaffila tunnetaan. Vaihda tekstit vastaamaan todellista tarjontaa."
-/>
+    <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-start">
+      {/* Left: main copy */}
+      <div className="lg:col-span-7">
+        <div className="space-y-4 text-base leading-7 text-white/75">
+          <p>
+            <span className="font-semibold text-white">Tuore kahvi</span>{" "}
+            on meillä ykkönen, huolella valitut pavut ja tasalaatuinen valmistus
+            jokaisessa kupissa.
+          </p>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Tuore kahvi",
-                desc: "Huolella valitut pavut ja tasalaatuinen valmistus — joka kupissa.",
-              },
-              {
-                title: "Leivonnaiset & herkut",
-                desc: "Klassikot ja kausimaut. Päivän vitriini elää sesongin mukaan.",
-              },
-              {
-                title: "Lämmin tunnelma",
-                desc: "Pehmeä paikka arkeen: yksin, ystävien kanssa tai etätöissä.",
-              },
-            ].map((c) => (
-              <div
-                key={c.title}
-                className="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10"
-              >
-                <p className="text-lg font-semibold text-white">{c.title}</p>
-                <p className="mt-2 text-sm leading-6 text-white/70">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+          <p>
+            <span className="font-semibold text-white">Leivonnaiset & herkut</span>{" "}
+            löytyvät vitriinistä joka päivä. Rakastetut klassikot ja kausimausteet
+            kulkevat mukana: jouluna{" "}
+            <span className="font-semibold text-white">joulutortut</span>, laskiaisena{" "}
+            <span className="font-semibold text-white">laskiaispullat</span>.
+          </p>
+
+          <p>
+            <span className="font-semibold text-white">Aamiainen</span>{" "}
+            tarjoillaan viikonloppuisin{" "}
+            <span className="font-semibold text-white">klo 10.00–13.00</span>.
+            Lisäksi löydät meiltä{" "}
+            <span className="font-semibold text-white">salaatteja</span> ja myös{" "}
+            <span className="font-semibold text-white">lämmintä ruokaa</span>.
+          </p>
+
+          <p className="text-white/70">
+            Poikkea paikan päälle nauttimaan, yksin taikka ystävien kanssa.
+          </p>
+        </div>
+      </div>
+
+      {/* Right: Ajankohtaista (editable via Sheets) */}
+      <div className="lg:col-span-5">
+        <MonthlyPromo />
+      </div>
+    </div>
+  </Container>
+</section>
+
+
 
            {/* PHOTO STRIPE */}
       <section className="bg-zinc-950 pb-16">
@@ -154,13 +166,17 @@ export default function HomePage() {
   variant="dark"
   kicker="Sijainti"
   title="Tervetuloa käymään"
-  description="Aleksis Kiven katu 11, 33100 Tampere. Aukioloajat voi lisätä footerin lisäksi myös tähän."
+  description="Sijaitsemme Tampereen keskustan sykkeessä Aleksis Kiven katu 11, 33100 Tampere. "
 />
 
 
           <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start">
             {/* LEFT: INFO CARD (locked to 360px) */}
-            <div className="h-[360px] rounded-3xl bg-white/5 p-5 ring-1 ring-white/10 lg:self-start">
+            <div
+  id="yhteystiedot"
+  className="scroll-mt-32 h-[360px] rounded-3xl bg-white/5 p-5 ring-1 ring-white/10 lg:self-start"
+>
+
               <div className="grid h-full gap-4 sm:grid-cols-2">
                 {/* Aukioloajat */}
                 <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">

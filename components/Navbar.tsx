@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Instagram, Facebook } from "lucide-react";
+
 
 
 const navItems = [
@@ -56,14 +58,28 @@ export default function NavBar() {
               {it.label}
             </Link>
           ))}
-          <a
-            href="https://www.facebook.com/kaffila33100"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 transition hover:bg-white/15"
-          >
-            Facebook
-          </a>
+          <div className="flex items-center gap-2">
+  <a
+    href="https://www.instagram.com/kaffila33100"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Avaa Instagram"
+    className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white ring-1 ring-white/15 transition hover:bg-white/15"
+  >
+    <Instagram className="h-5 w-5" />
+  </a>
+
+  <a
+    href="https://www.facebook.com/kaffila33100"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Avaa Facebook"
+    className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white ring-1 ring-white/15 transition hover:bg-white/15"
+  >
+    <Facebook className="h-5 w-5" />
+  </a>
+</div>
+
         </div>
 
         <button

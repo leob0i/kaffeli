@@ -1,38 +1,57 @@
-import Container from "@/components/Container";
+import Image from "next/image";
+import Link from "next/link";
 import { getActivePromo } from "@/lib/promo";
 
 export default async function MonthlyPromo() {
   const promo = await getActivePromo();
-  if (!promo) return null;
+
+  // Jos ei ole aktiivista riviä, näytetään siisti "tyhjä tila" ettei layout jää vajaaksi.
+  if (!promo) {
+    return (
+      <aside className="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
+        <p className="text-xs font-semibold text-amber-300">Ajankohtaista</p>
+        <p className="mt-2 text-sm leading-6 text-white/70">
+          Päivitämme tähän ajankohtaiset tarjoukset, uutuudet ja tapahtumat.
+        </p>
+      </aside>
+    );
+  }
+
+  const title = (promo.title ?? "").trim();
+  const text = (promo.text ?? "").trim();
+  const ctaUrl = promo.ctaUrl?.trim();
+  const ctaText = (promo.ctaText ?? "Lue lisää").trim();
+  const imageSrc = promo.image?.trim() ? `/promos/${promo.image.trim()}` : null;
 
   return (
-    <section className="bg-zinc-950 py-6 sm:py-8">
-      <Container>
-        <div className="mx-auto max-w-3xl">
-          <div className="relative overflow-hidden rounded-2xl bg-white/[0.04] p-5 ring-1 ring-white/10 sm:p-6">
-            {/* pehmeä “glow” taustaan */}
-            <div className="pointer-events-none absolute -left-24 -top-24 h-56 w-56 rounded-full bg-amber-400/10 blur-3xl" />
-            <div className="pointer-events-none absolute -right-24 -bottom-24 h-56 w-56 rounded-full bg-white/5 blur-3xl" />
+    <aside className="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
+      <p className="text-xs font-semibold text-amber-300">Ajankohtaista</p>
 
-            <div className="relative">
-              <div className="flex items-center gap-3">
-                <span className="h-5 w-1.5 rounded-full bg-amber-300/90" />
-                <p className="text-[10px] font-semibold tracking-[0.28em] text-white/70">
-                  AJANKOHTAISTA
-                </p>
-              </div>
+      {title ? (
+        <p className="mt-3 text-lg font-semibold text-white">{title}</p>
+      ) : null}
 
-              <h2 className="mt-3 text-xl font-semibold tracking-tight text-white sm:text-2xl">
-                {promo.title}
-              </h2>
+      {text ? (
+        <p className="mt-2 text-sm leading-6 text-white/70">{text}</p>
+      ) : null}
 
-              <p className="mt-2 text-sm leading-6 text-white/70 sm:text-base sm:leading-7">
-                {promo.text}
-              </p>
-            </div>
-          </div>
+      {imageSrc ? (
+        <div className="relative mt-4 aspect-[16/10] overflow-hidden rounded-2xl ring-1 ring-white/10">
+          <Image src={imageSrc} alt={title || "Ajankohtaista"} fill className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
         </div>
-      </Container>
-    </section>
+      ) : null}
+
+      {ctaUrl ? (
+        <div className="mt-5">
+          <Link
+            href={ctaUrl}
+            className="inline-flex items-center justify-center rounded-2xl bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/20"
+          >
+            {ctaText} →
+          </Link>
+        </div>
+      ) : null}
+    </aside>
   );
 }
