@@ -3,11 +3,15 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import MonthlyPromo from "@/components/MonthlyPromo";
+import { Instagram, Facebook } from "lucide-react";
+
 
 const SITE = {
   name: "Kaffila",
   address: "Aleksis Kiven katu 11, Tampere, Finland, 33100",
   facebook: "https://www.facebook.com/kaffila33100",
+  instagram: "https://www.instagram.com/kaffila33100/?hl=fi", 
+
 
   email: "info@kaffila.fi",
   phone: "0105085100",
@@ -174,7 +178,7 @@ export default function HomePage() {
             {/* LEFT: INFO CARD (locked to 360px) */}
             <div
   id="yhteystiedot"
-  className="scroll-mt-32 h-[360px] rounded-3xl bg-white/5 p-5 ring-1 ring-white/10 lg:self-start"
+  className="scroll-mt-32 rounded-3xl bg-white/5 p-5 ring-1 ring-white/10 lg:h-[360px] lg:self-start"
 >
 
               <div className="grid h-full gap-4 sm:grid-cols-2">
@@ -213,8 +217,8 @@ export default function HomePage() {
                     Yhteystiedot
                   </p>
 
-                  <div className="mt-2 space-y-2 text-sm">
-  {/* 1) Sähköposti */}
+               <div className="mt-3 space-y-3 text-sm">
+  {/* Sähköposti */}
   <a
     href={`mailto:${SITE.email}`}
     className="block w-fit font-semibold text-white underline underline-offset-4 decoration-white/30 hover:decoration-white"
@@ -222,37 +226,52 @@ export default function HomePage() {
     {SITE.email}
   </a>
 
-  {/* 2) Puhelin */}
+  {/* Puhelin */}
   <a
     href={`tel:${SITE.phone.replace(/\s/g, "")}`}
     className="block w-fit font-semibold text-white underline underline-offset-4 decoration-white/30 hover:decoration-white"
   >
-    {SITE.phone}
+    puh: {SITE.phone}
   </a>
 
-  {/* 3) Facebook */}
-  <a
-    href={SITE.facebook}
-    target="_blank"
-    rel="noreferrer"
-    className="block w-fit font-semibold text-white underline underline-offset-4 decoration-white/30 hover:decoration-white"
-  >
-    Facebook-sivu
-  </a>
+  {/* SOME-IKONIT */}
+  <div className="flex items-center gap-3 pt-1">
+    <a
+      href={SITE.instagram}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Instagram"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15 transition hover:bg-white/20"
+    >
+      <Instagram className="h-4 w-4" />
+    </a>
 
-  {/* Osoite boksi */}
-  <div className="rounded-xl bg-white/5 p-3 ring-1 ring-white/10">
+    <a
+      href={SITE.facebook}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Facebook"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/15 transition hover:bg-white/20"
+    >
+      <Facebook className="h-4 w-4" />
+    </a>
+  </div>
+
+  {/* Osoite */}
+  <div className="mt-3 rounded-xl bg-white/5 p-3 ring-1 ring-white/10">
     <p className="text-xs font-semibold text-amber-300">Osoite</p>
     <p className="mt-2 text-sm text-white/70">{SITE.address}</p>
   </div>
 </div>
+
 
                 </div>
               </div>
             </div>
 
             {/* RIGHT: MAP (locked to 360px) */}
-            <div className="h-[360px] overflow-hidden rounded-3xl bg-white/5 ring-1 ring-white/10 lg:self-start">
+            <div className="h-[300px] sm:h-[360px] overflow-hidden rounded-3xl bg-white/5 ring-1 ring-white/10 lg:self-start">
+
               <iframe
                 title="Kaffila kartta"
                 src={SITE.mapEmbedUrl}

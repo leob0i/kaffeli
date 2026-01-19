@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { getActivePromo } from "@/lib/promo";
 
 export default async function MonthlyPromo() {
@@ -19,8 +18,6 @@ export default async function MonthlyPromo() {
 
   const title = (promo.title ?? "").trim();
   const text = (promo.text ?? "").trim();
-  const ctaUrl = promo.ctaUrl?.trim();
-  const ctaText = (promo.ctaText ?? "Lue lisää").trim();
   const imageSrc = promo.image?.trim() ? `/promos/${promo.image.trim()}` : null;
 
   return (
@@ -37,19 +34,13 @@ export default async function MonthlyPromo() {
 
       {imageSrc ? (
         <div className="relative mt-4 aspect-[16/10] overflow-hidden rounded-2xl ring-1 ring-white/10">
-          <Image src={imageSrc} alt={title || "Ajankohtaista"} fill className="object-cover" />
+          <Image
+            src={imageSrc}
+            alt={title || "Ajankohtaista"}
+            fill
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
-        </div>
-      ) : null}
-
-      {ctaUrl ? (
-        <div className="mt-5">
-          <Link
-            href={ctaUrl}
-            className="inline-flex items-center justify-center rounded-2xl bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/20"
-          >
-            {ctaText} →
-          </Link>
         </div>
       ) : null}
     </aside>

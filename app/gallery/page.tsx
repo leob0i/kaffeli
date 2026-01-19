@@ -17,7 +17,7 @@ export default function GalleryPage() {
           <SectionHeading
             kicker="Kaffila"
             title="Galleria"
-            description="Klikkaa kuvaa avataksesi sen isompana. Lisää/poista kuvia nimeämällä tiedostot 01.jpg, 02.jpg jne."
+            description="Tunnelmia, herkkuja ja kahvihetkiä Kaffilassa."
           />
           <div className="mt-6">
             <Link
