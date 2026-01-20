@@ -234,6 +234,13 @@ export default function HomePage() {
     puh: {SITE.phone}
   </a>
 
+
+  {/* NOPEIN TAPA TAVOITTAA */}
+  <p className="text-sm text-white/70">
+  Meidät saa nopeiten kiinni puhelimitse tai facebookin puolella 😊
+</p>
+
+
   {/* SOME-IKONIT */}
   <div className="flex items-center gap-3 pt-1">
     <a
