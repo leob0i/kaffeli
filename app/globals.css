@@ -17,3 +17,33 @@ body {
 h1, h2 {
   font-family: var(--font-playfair);
 }
+
+/* "kyltti"-tyylinen hero-otsikko */
+.sign-title {
+  /* kevyt kyltti-fiilis */
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+}
+
+.sign-letter {
+  display: inline-block;
+  transform: translateY(var(--y, 0px)) rotate(var(--r, 0deg));
+  transform-origin: 50% -14px; /* heilumisen "ripustus" vähän yläpuolelle */
+  margin-right: 0.02em;
+}
+
+/* Heiluvat kirjaimet */
+.sign-swing {
+  animation: sign-swing 3.2s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+  will-change: transform;
+}
+
+@keyframes sign-swing {
+  0%,
+  100% {
+    transform: translateY(var(--y, 0px)) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(calc(var(--y, 0px) + 2px)) rotate(calc(var(--r, 0deg) + 6deg));
+  }
+}

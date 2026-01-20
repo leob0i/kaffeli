@@ -49,7 +49,7 @@ export default function HomePage() {
 
             <p className="mt-5 text-base leading-7 text-white/75 sm:text-lg">
               Kaffila on paikka, jossa tuore kahvi, herkut ja lämmin tunnelma
-              kohtaavat. Poikkea hetkeksi ja nauti.
+              kohtaavat Tampereen sydämmessä.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -59,12 +59,7 @@ export default function HomePage() {
               >
                 Näytä sijainti
               </a>
-              <Link
-                href="/gallery"
-                className="inline-flex justify-center rounded-2xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 transition hover:bg-white/15"
-              >
-                Katso galleria
-              </Link>
+             
               <a
   href="#yhteystiedot"
   className="inline-flex justify-center rounded-2xl bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 ring-1 ring-white/10 transition hover:bg-white/10"
@@ -77,94 +72,121 @@ export default function HomePage() {
         </Container>
       </section>
 
- {/* HIGHLIGHTS (text-first + Ajankohtaista right) */}
-<section className="bg-zinc-950 py-16 sm:py-20">
-  <Container>
-    <SectionHeading
-      variant="dark"
-      title="Laatu, joka näkyy ja maistuu"
-      description="Tuore kahvi, sesongin herkut ja rento tunnelma, tervetuloa nauttimaan."
-    />
-
-    <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-start">
-      {/* Left: main copy */}
-      <div className="lg:col-span-7">
-        <div className="space-y-4 text-base leading-7 text-white/75">
-          <p>
-            <span className="font-semibold text-white">Tuore kahvi</span>{" "}
-            on meillä ykkönen, huolella valitut pavut ja tasalaatuinen valmistus
-            jokaisessa kupissa.
-          </p>
-
-          <p>
-            <span className="font-semibold text-white">Leivonnaiset & herkut</span>{" "}
-            löytyvät vitriinistä joka päivä. Rakastetut klassikot ja kausimausteet
-            kulkevat mukana: jouluna{" "}
-            <span className="font-semibold text-white">joulutortut</span>, laskiaisena{" "}
-            <span className="font-semibold text-white">laskiaispullat</span>.
-          </p>
-
-          <p>
-            <span className="font-semibold text-white">Aamiainen</span>{" "}
-            tarjoillaan viikonloppuisin{" "}
-            <span className="font-semibold text-white">klo 10.00–13.00</span>.
-            Lisäksi löydät meiltä{" "}
-            <span className="font-semibold text-white">salaatteja</span> ja myös{" "}
-            <span className="font-semibold text-white">lämmintä ruokaa</span>.
-          </p>
-
-          <p className="text-white/70">
-            Poikkea paikan päälle nauttimaan, yksin taikka ystävien kanssa.
-          </p>
+       {/* HIGHLIGHTS + PHOTO STRIPE BACKDROP */}
+      <div className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/17.jpg"
+            alt="Kaffila – osio tausta"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          {/* tumma overlay + aavistuksen tummempi ylä/ala */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(9,9,11,0.96),rgba(9,9,11,0.86),rgba(9,9,11,0.96))]" />
+          <div className="absolute inset-0 bg-black/28" />
         </div>
-      </div>
 
-      {/* Right: Ajankohtaista (editable via Sheets) */}
-      <div className="lg:col-span-5">
-        <MonthlyPromo />
-      </div>
-    </div>
-  </Container>
-</section>
+        {/* HIGHLIGHTS (text-first + Ajankohtaista right) */}
+        <section className="py-16 sm:py-20">
+          <Container>
+            <SectionHeading
+              variant="dark"
+              title="Laatu, joka näkyy ja maistuu"
+              description="Tuore kahvi, sesongin herkut ja rento tunnelma, tervetuloa nauttimaan."
+            />
 
+            <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-start">
+              {/* Left: main copy */}
+              <div className="lg:col-span-7">
+                <div className="space-y-4 text-base leading-7 text-white/75">
+  <p>
+    <span className="font-semibold text-white">Tuore kahvi</span>{" "}
+    on meillä ykkönen, huolella valitut pavut ja tasalaatuinen valmistus
+    jokaisessa kupissa.
+  </p>
 
+  <p>
+    <span className="font-semibold text-white">Leivonnaiset & herkut</span>{" "}
+    löytyvät vitriinistä joka päivä. Herkulliset klassikot ja kausiherkut
+vaihtelevat. Jouluna joulutortut ja laskiaisena laskiaispullat.
+  </p>
 
-           {/* PHOTO STRIPE */}
-      <section className="bg-zinc-950 pb-16">
-        <Container>
-          <div className="relative">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {[1, 2, 3, 4].map((n) => (
-                <div
-                  key={n}
-                  className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-white/5 ring-1 ring-white/10"
-                >
-                  <Image
-                    src={`/images/etusivu/0${n}.jpg`}
-                    alt={`Kaffila tunnelmakuva ${n}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                </div>
-              ))}
+  <p>
+    <span className="font-semibold text-white">Aamiainen</span>{" "}
+    tarjoillaan joka viikonloppu{" "}
+    <span className="font-semibold text-white">klo 10.00–13.00</span>.
+    Lisäksi löydät meiltä salaatteja ja myös lämmintä ruokaa aamusta iltaan.
+  </p>
+
+  <p className="text-white/70">
+    Poikkea paikan päälle nauttimaan, yksin taikka ystävien kanssa.
+  </p>
+</div>
+
+              </div>
+
+              {/* Right: Ajankohtaista (editable via Sheets) */}
+              <div className="lg:col-span-5">
+                <MonthlyPromo />
+              </div>
             </div>
+          </Container>
+        </section>
 
-            <Link
-              href="/gallery"
-              className="absolute bottom-3 right-3 z-10 inline-flex items-center justify-center rounded-2xl bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/20 sm:bottom-4 sm:right-4"
-              aria-label="Katso koko galleriamme"
-            >
-              Katso koko galleriamme →
-            </Link>
-          </div>
-        </Container>
-      </section>
+        {/* PHOTO STRIPE */}
+        <section className="pb-16">
+          <Container>
+            <div className="relative">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {[1, 2, 3, 4].map((n) => (
+                  <div
+                    key={n}
+                    className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-white/5 ring-1 ring-white/10"
+                  >
+                    <Image
+                      src={`/images/etusivu/0${n}.jpg`}
+                      alt={`Kaffila tunnelmakuva ${n}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href="/gallery"
+                className="absolute bottom-3 right-3 z-10 inline-flex items-center justify-center rounded-2xl bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/20 sm:bottom-4 sm:right-4"
+                aria-label="Katso koko galleriamme"
+              >
+                Katso koko galleriamme →
+              </Link>
+            </div>
+          </Container>
+        </section>
+      </div>
+
 
 
       {/* LOCATION */}
-      <section id="sijainti" className="bg-zinc-950 py-16 sm:py-20">
+      <section id="sijainti" className="relative isolate overflow-hidden bg-zinc-950 py-16 sm:py-20">
+
+  {/* Taustakuva + tumma overlay (LOCATION-osion alle) */}
+  <div className="absolute inset-0 -z-10">
+    <Image
+      src="/images/03.jpg"
+      alt="Kaffila – sijainti tausta"
+      fill
+      className="object-cover"
+      sizes="100vw"
+    />
+    <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-zinc-950" />
+    <div className="absolute inset-0 bg-black/15" />
+  </div>
+
+
         <Container>
           <SectionHeading
   variant="dark"
@@ -176,14 +198,16 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-start">
             {/* LEFT: INFO CARD (locked to 360px) */}
-            <div
+           <div
   id="yhteystiedot"
-  className="scroll-mt-32 rounded-3xl bg-white/5 p-5 ring-1 ring-white/10 lg:h-[360px] lg:self-start"
+  className="scroll-mt-32 rounded-3xl bg-black/40 p-5 ring-1 ring-white/10 lg:h-[360px] lg:self-start"
 >
 
               <div className="grid h-full gap-4 sm:grid-cols-2">
                 {/* Aukioloajat */}
-                <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                <div className="p-4">
+
+
                   <p className="text-xs font-semibold text-amber-300">
                     Aukioloajat
                   </p>
@@ -212,7 +236,9 @@ export default function HomePage() {
                 </div>
 
                 {/* Yhteystiedot + Osoite */}
-                <div className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                <div className="p-4">
+
+
                   <p className="text-xs font-semibold text-amber-300">
                     Yhteystiedot
                   </p>
@@ -265,10 +291,13 @@ export default function HomePage() {
   </div>
 
   {/* Osoite */}
-  <div className="mt-3 rounded-xl bg-white/5 p-3 ring-1 ring-white/10">
-    <p className="text-xs font-semibold text-amber-300">Osoite</p>
-    <p className="mt-2 text-sm text-white/70">{SITE.address}</p>
-  </div>
+<div className="pt-4">
+  <p className="text-xs font-semibold text-amber-300 uppercase tracking-wide">
+    Osoite
+  </p>
+  <p className="mt-2 text-sm text-white/70">{SITE.address}</p>
+</div>
+
 </div>
 
 

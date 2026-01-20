@@ -52,7 +52,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <NavBar />
         <main id="content">{children}</main>
         <footer className="border-t border-white/10 bg-zinc-950">
-  <div className="mx-auto w-full max-w-4xl px-4 py-5 sm:px-6">
+  <div className="mx-auto w-full max-w-6xl px-4 py-5 sm:px-6">
+
     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
       {/* LEFT */}
       <div className="min-w-0">
